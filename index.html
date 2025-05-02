@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Tienda Renault Fast</title>
+  <style>
+    body { font-family: Arial; background: #f9f9f9; padding: 20px; }
+    .producto { background: #fff; padding: 10px; margin: 10px; border-radius: 8px; box-shadow: 0 0 5px #ccc; width: 250px; text-align: center; }
+    .productos { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+    .carrito { margin-top: 20px; text-align: center; }
+    button { background: #25d366; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer; }
+    p { font-size: 14px; }
+  </style>
+</head>
+<body>
+  <h1 style="text-align:center;">Repuestos Renault Fast</h1>
+  <div class="productos">
+    <div class="producto">
+      <img src="producto_0.png" width="100%">
+      <p>$224.42</p>
+      <p><strong>$224.42</strong></p>
+      <button onclick="agregarAlCarrito(`$224.42`, 224.42)">Agregar</button>
+    </div>
+    
+    <div class="producto">
+      <img src="producto_1.png" width="100%">
+      <p>$224.42</p>
+      <p><strong>$224.42</strong></p>
+      <button onclick="agregarAlCarrito(`$224.42`, 224.42)">Agregar</button>
+    </div>
+    
+    <div class="producto">
+      <img src="producto_2.png" width="100%">
+      <p>$224.42</p>
+      <p><strong>$224.42</strong></p>
+      <button onclick="agregarAlCarrito(`$224.42`, 224.42)">Agregar</button>
+    </div>
+    
+    <div class="producto">
+      <img src="producto_3.png" width="100%">
+      <p>$224.42</p>
+      <p><strong>$224.42</strong></p>
+      <button onclick="agregarAlCarrito(`$224.42`, 224.42)">Agregar</button>
+    </div>
+    
+    <div class="producto">
+      <img src="producto_4.png" width="100%">
+      <p>$224.42</p>
+      <p><strong>$224.42</strong></p>
+      <button onclick="agregarAlCarrito(`$224.42`, 224.42)">Agregar</button>
+    </div>
+    
+    <div class="producto">
+      <img src="producto_5.png" width="100%">
+      <p>$224.42</p>
+      <p><strong>$224.42</strong></p>
+      <button onclick="agregarAlCarrito(`$224.42`, 224.42)">Agregar</button>
+    </div>
+    
+    <div class="producto">
+      <img src="producto_6.png" width="100%">
+      <p>$224.42</p>
+      <p><strong>$224.42</strong></p>
+      <button onclick="agregarAlCarrito(`$224.42`, 224.42)">Agregar</button>
+    </div>
+    
+    <div class="producto">
+      <img src="producto_7.png" width="100%">
+      <p>$224.42</p>
+      <p><strong>$224.42</strong></p>
+      <button onclick="agregarAlCarrito(`$224.42`, 224.42)">Agregar</button>
+    </div>
+    
+    <div class="producto">
+      <img src="producto_8.png" width="100%">
+      <p>$224.42</p>
+      <p><strong>$224.42</strong></p>
+      <button onclick="agregarAlCarrito(`$224.42`, 224.42)">Agregar</button>
+    </div>
+    
+    <div class="producto">
+      <img src="producto_9.png" width="100%">
+      <p>$224.42</p>
+      <p><strong>$224.42</strong></p>
+      <button onclick="agregarAlCarrito(`$224.42`, 224.42)">Agregar</button>
+    </div>
+    </div>
+  <div class="carrito">
+    <h2>Carrito</h2>
+    <ul id="listaCarrito"></ul>
+    <p><strong>Total: $<span id="total">0.00</span></strong></p>
+    <button onclick="enviarPedido()">Enviar por WhatsApp</button>
+  </div>
+  <script>
+    const carrito = [];
+    function agregarAlCarrito(nombre, precio) {
+      carrito.push({nombre, precio});
+      actualizarCarrito();
+    }
+    function actualizarCarrito() {
+      const lista = document.getElementById("listaCarrito");
+      lista.innerHTML = "";
+      let total = 0;
+      carrito.forEach(prod => {
+        const li = document.createElement("li");
+        li.innerText = `${prod.nombre} - $${prod.precio.toFixed(2)}`;
+        lista.appendChild(li);
+        total += prod.precio;
+      });
+      document.getElementById("total").innerText = total.toFixed(2);
+    }
+    function enviarPedido() {
+      if (carrito.length === 0) {
+        alert("Tu carrito está vacío");
+        return;
+      }
+      let mensaje = "Hola, quiero comprar:%0A";
+      let total = 0;
+      carrito.forEach(p => {
+        mensaje += `- ${p.nombre} - $${p.precio.toFixed(2)}%0A`;
+        total += p.precio;
+      });
+      mensaje += `%0ATotal: $${total.toFixed(2)}`;
+      window.open(`https://wa.me/593987292577?text=${mensaje}`, "_blank");
+    }
+  </script>
+</body>
+</html>
